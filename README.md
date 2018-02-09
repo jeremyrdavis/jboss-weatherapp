@@ -1,0 +1,2 @@
+# jboss-weatherapp
+Demo application
