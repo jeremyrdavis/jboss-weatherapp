@@ -62,10 +62,11 @@ public class OpenWeatherMapAPIService implements WeatherService{
 				throw new RuntimeException("'dom' is null");
 			}
 			Element current = (Element) dom.getElementsByTagName("current").item(0);
+			Element city = (Element) current.getElementsByTagName("city").item(0);
 			Element temperature = (Element) current.getElementsByTagName("temperature").item(0);
 			Element weather = (Element) current.getElementsByTagName("weather").item(0);
 			String[] split = location.split(",");
-			return new LocationWeather(Float.parseFloat(temperature.getAttribute("value")),
+			return new LocationWeather(city.getAttribute("name").toString(), Float.parseFloat(temperature.getAttribute("value")),
 					weather.getAttribute("value"), split[1].trim());
 		}
 	}

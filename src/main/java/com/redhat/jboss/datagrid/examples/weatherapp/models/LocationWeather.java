@@ -4,16 +4,24 @@ import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.w3c.dom.Element;
+
 @XmlRootElement
 public class LocationWeather implements Serializable {
 	final float temperature;
 	final String conditions;
 	final String country;
+	final String city;
 
-	public LocationWeather(float temperature, String conditions, String country) {
+	public LocationWeather(String city, float temperature, String conditions, String country) {
+		this.city = city;
 		this.temperature = temperature;
 		this.conditions = conditions;
 		this.country = country;
+	}
+
+	public String getCity() {
+		return city;
 	}
 
 	public float getTemperature() {
