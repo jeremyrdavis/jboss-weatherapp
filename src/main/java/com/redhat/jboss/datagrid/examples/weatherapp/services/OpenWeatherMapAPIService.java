@@ -52,7 +52,7 @@ public class OpenWeatherMapAPIService implements WeatherService{
 	}
 
 	public LocationWeather getWeatherForLocation(String location) {
-
+		
 		if (location == null) {
 			throw new RuntimeException("'location' is null");
 		} else {
