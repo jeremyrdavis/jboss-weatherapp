@@ -12,6 +12,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.redhat.jboss.datagrid.examples.weatherapp.models.LocationWeather;
+import com.redhat.jboss.datagrid.examples.weatherapp.services.CachingWeatherService;
 import com.redhat.jboss.datagrid.examples.weatherapp.services.OpenWeatherMapAPIService;
 import com.redhat.jboss.datagrid.examples.weatherapp.services.WeatherService;
 
@@ -25,7 +26,7 @@ public class WeatherServiceEndpoint implements WeatherService{
 			"Washington, USA" };
 
 	@Inject
-	OpenWeatherMapAPIService weatherService;
+	CachingWeatherService weatherService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
