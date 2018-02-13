@@ -4,45 +4,6 @@
 <script src="http://code.jquery.com/jquery-3.3.1.js"
 			  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 			  crossorigin="anonymous"></script>
-
-<!-- 
-/**
- * 
- $(document).ready(function(){
-    $("button").click(function(){
-        $.ajax({
-            url: "http://localhost:8080/jboss-weatherapp-0.0.1-SNAPSHOT/rest/weather/London,%20UK", 
-            dataType: "",
-            success: function(result){
-            		$("#div1").load(result);
-        		}
-		});
-    });
-});
-*/
-*
- $(document).ready(function(){
-	$("button").click(function(){
-	    $.get("http://localhost:8080/jboss-weatherapp-0.0.1-SNAPSHOT/rest/weather/London,%20UK", function(data, status){
-	        alert("Data: " + data + "\nStatus: " + status);
-	    });
-	});
-});
-
-$.getJSON( "http://localhost:8080/jboss-weatherapp-0.0.1-SNAPSHOT/rest/weather/London,%20UK", function( data ) {
-	alert(data);
-	  var items = [];
-	  $.each( data, function( key, val ) {
-	    items.push( "<li id='" + key + "'>" + val + "</li>" );
-	  });
-	 
-	  $( "<ul/>", {
-	    "class": "my-new-list",
-	    html: items.join( "" )
-	  }).appendTo( "#div1" );
-	});
-
--->
 <script>
 $(document).ready(function(){
 	
@@ -57,8 +18,19 @@ $(document).ready(function(){
 	});
 
 	$("#button2").click(function(){
-			alert("button2");
+			$.getJSON( "http://localhost:8080/jboss-weatherapp-0.0.1-SNAPSHOT/rest/weather", function( json ) {
+				var html = '';
+		        $.each(json, function(key, value){
+		            html += '<div class="dcell">';
+		            html += value.city;
+		            html += ', ';
+		            html += value.country;
+		            html += '</div>';
+		        });
+		    		$('#div1').html(html);
+			});
 		});
+
 });
 </script>
 </head>
