@@ -46,7 +46,7 @@ $.getJSON( "http://localhost:8080/jboss-weatherapp-0.0.1-SNAPSHOT/rest/weather/L
 <script>
 $(document).ready(function(){
 	
-	$("button").click(function(){
+	$("#button1").click(function(){
 		$.getJSON( "http://localhost:8080/jboss-weatherapp-0.0.1-SNAPSHOT/rest/weather/London,%20UK", function( json ) {
 			  console.log( "City: " + json.city + ", " + json.country );
 			  console.log( "City: " + json.temperature + ", " + json.conditions );
@@ -55,6 +55,10 @@ $(document).ready(function(){
 			  $("#div1").html(weather);
 			 });
 	});
+
+	$("#button2").click(function(){
+			alert("button2");
+		});
 });
 </script>
 </head>
@@ -62,7 +66,8 @@ $(document).ready(function(){
 
 <div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
 
-<button>Get External Content</button>
+<button id="button1">Get Some Weather</button>
+<button id="button2">Get All Weather</button>
 
 </body>
 </html>
