@@ -1,14 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-3.3.1.js"
+			  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+			  crossorigin="anonymous"></script>
+
+<!-- 
+/**
+ * 
+ $(document).ready(function(){
+    $("button").click(function(){
+        $.ajax({
+            url: "http://localhost:8080/jboss-weatherapp-0.0.1-SNAPSHOT/rest/weather/London,%20UK", 
+            dataType: "",
+            success: function(result){
+            		$("#div1").load(result);
+        		}
+		});
+    });
+});
+*/
+*
+ $(document).ready(function(){
+	$("button").click(function(){
+	    $.get("http://localhost:8080/jboss-weatherapp-0.0.1-SNAPSHOT/rest/weather/London,%20UK", function(data, status){
+	        alert("Data: " + data + "\nStatus: " + status);
+	    });
+	});
+});
+
+$.getJSON( "http://localhost:8080/jboss-weatherapp-0.0.1-SNAPSHOT/rest/weather/London,%20UK", function( data ) {
+	alert(data);
+	  var items = [];
+	  $.each( data, function( key, val ) {
+	    items.push( "<li id='" + key + "'>" + val + "</li>" );
+	  });
+	 
+	  $( "<ul/>", {
+	    "class": "my-new-list",
+	    html: items.join( "" )
+	  }).appendTo( "#div1" );
+	});
+
+-->
 <script>
 $(document).ready(function(){
-    $("button").click(function(){
-        $.ajax({url: "http://localhost:8080/jboss-weatherapp-0.0.1-SNAPSHOT/rest/weather/London,%20UK", success: function(result){
-            $("#div1").html(result);
-        }});
-    });
+	
+	$("button").click(function(){
+		$.getJSON( "http://localhost:8080/jboss-weatherapp-0.0.1-SNAPSHOT/rest/weather/London,%20UK", function( json ) {
+			  console.log( "City: " + json.city + ", " + json.country );
+			  console.log( "City: " + json.temperature + ", " + json.conditions );
+			  var weather = json.city + ", " + json.country + ": " + json.temperature + " with " + json.conditions;
+			  console.log(weather);
+			  $("#div1").html(weather);
+			 });
+	});
 });
 </script>
 </head>
