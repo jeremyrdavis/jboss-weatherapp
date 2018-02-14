@@ -1,4 +1,4 @@
-package com.redhat.jboss.datagrid.examples.weatherapp;
+package com.redhat.jboss.datagrid.examples.weatherapp.rest;
 
 import java.util.ArrayList;
 import java.util.List;

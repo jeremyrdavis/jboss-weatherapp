@@ -12,7 +12,6 @@ import org.jboss.logging.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import com.redhat.jboss.datagrid.examples.weatherapp.WeatherServiceEndpoint;
 import com.redhat.jboss.datagrid.examples.weatherapp.models.LocationWeather;
 
 @ApplicationScoped
