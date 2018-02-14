@@ -3,7 +3,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -14,7 +13,6 @@ import org.w3c.dom.Element;
 
 import com.redhat.jboss.datagrid.examples.weatherapp.models.LocationWeather;
 
-@ApplicationScoped
 public class OpenWeatherMapAPIService implements WeatherService{
 
 	private static final Logger LOGGER = Logger.getLogger(OpenWeatherMapAPIService.class);
