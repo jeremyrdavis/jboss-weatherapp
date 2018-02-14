@@ -8,13 +8,17 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.jboss.logging.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import com.redhat.jboss.datagrid.examples.weatherapp.WeatherServiceEndpoint;
 import com.redhat.jboss.datagrid.examples.weatherapp.models.LocationWeather;
 
 @ApplicationScoped
 public class OpenWeatherMapAPIService implements WeatherService{
+
+	private static final Logger LOGGER = Logger.getLogger(OpenWeatherMapAPIService.class);
 
 	final private static String OWM_BASE_URL = "http://api.openweathermap.org/data/2.5/weather";
 	private DocumentBuilder db;
@@ -56,7 +60,7 @@ public class OpenWeatherMapAPIService implements WeatherService{
 		if (location == null) {
 			throw new RuntimeException("'location' is null");
 		} else {
-			System.out.println("fetching weather for '" + location + "'");
+			LOGGER.debug("fetching weather for '" + location + "'");
 			Document dom = fetchData(location);
 			if (dom == null) {
 				throw new RuntimeException("'dom' is null");

@@ -11,22 +11,24 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.jboss.logging.Logger;
+
 import com.redhat.jboss.datagrid.examples.weatherapp.models.LocationWeather;
-import com.redhat.jboss.datagrid.examples.weatherapp.services.CachingWeatherService;
-import com.redhat.jboss.datagrid.examples.weatherapp.services.OpenWeatherMapAPIService;
 import com.redhat.jboss.datagrid.examples.weatherapp.services.WeatherService;
 
 @Path("/weather")
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
-public class WeatherServiceEndpoint implements WeatherService{
+public class WeatherServiceEndpoint {
+	
+	private static final Logger LOGGER = Logger.getLogger(WeatherServiceEndpoint.class);
 	
 	static final String[] locations = { "Rome, Italy", "Como, Italy", "Basel, Switzerland", "Bern, Switzerland",
 			"London, UK", "Ottawa, Canada", "Toronto, Canada", "Lisbon, Portugal", "Porto, Portugal", "Raleigh, USA",
 			"Washington, USA" };
 
 	@Inject
-	CachingWeatherService weatherService;
+	WeatherService weatherService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -42,7 +44,7 @@ public class WeatherServiceEndpoint implements WeatherService{
     @Path("/{location}")
     @Produces(MediaType.APPLICATION_JSON)
 	public LocationWeather getWeatherForLocation(@PathParam("location") String location) {
-    		System.out.println("getWeatherForLocation called for " + location);
+    		LOGGER.debug("getWeatherForLocation called for " + location);
 		return weatherService.getWeatherForLocation(location);
 	}
     

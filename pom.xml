@@ -164,6 +164,14 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+			<version>3.3.0.Final-redhat-1</version>
+			<scope>provided</scope>
+		</dependency>
+
 		<!-- Needed for running tests (you may also use TestNG) -->
 		<dependency>
 			<groupId>junit</groupId>
