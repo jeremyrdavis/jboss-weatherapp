@@ -8,7 +8,7 @@
 $(document).ready(function(){
 	
 	$("#button1").click(function(){
-		$.getJSON( "http://localhost:8080/jboss-weatherapp-0.0.1-SNAPSHOT/rest/weather/London,%20UK", function( json ) {
+		$.getJSON( "http://localhost:8080/jboss-weatherapp/rest/weather/London,%20UK", function( json ) {
 			  console.log( "City: " + json.city + ", " + json.country );
 			  console.log( "City: " + json.temperature + ", " + json.conditions );
 			  var weather = json.city + ", " + json.country + ": " + json.temperature + " with " + json.conditions;
@@ -18,7 +18,7 @@ $(document).ready(function(){
 	});
 
 	$("#button2").click(function(){
-			$.getJSON( "http://localhost:8080/jboss-weatherapp-0.0.1-SNAPSHOT/rest/weather", function( json ) {
+			$.getJSON( "http://localhost:8080/jboss-weatherapp/rest/weather", function( json ) {
 				var html = '';
 		        $.each(json, function(key, value){
 		            html += '<div class="dcell">';
