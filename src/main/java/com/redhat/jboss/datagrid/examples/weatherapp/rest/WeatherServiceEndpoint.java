@@ -29,7 +29,7 @@ public class WeatherServiceEndpoint {
 			"London, UK", "Ottawa, Canada", "Toronto, Canada", "Lisbon, Portugal", "Porto, Portugal", "Raleigh, USA",
 			"Washington, USA" };
 
-	@Inject 
+	@Inject @Named("cachingWeatherService")
 	WeatherService weatherService;
 	
 	@GET

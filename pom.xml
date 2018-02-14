@@ -200,6 +200,11 @@
 			<version>8.4.1.Final-redhat-2</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>javax.cache</groupId>
+			<artifactId>cache-api</artifactId>
+			<version>1.0.0.redhat-1</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<!-- Maven will append the version to the finalName (which is the name 
@@ -213,10 +218,10 @@
 					<!-- Java EE doesn't require web.xml, Maven needs to catch up! -->
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 					<archive>
-						<manifestEntries>
-							<Dependencies>org.infinispan:jdg-7.1 services</Dependencies>
+<!-- 						<manifestEntries>
+							<Dependencies>org.infinispan:jdg-7.1 services, org.infinispan.cdi.common:jdg-7.1 annotations, org.infinispan.cdi.embedded:jdg-7.1 annotations, org.infinispan.jcache:jdg-7.1 annotation</Dependencies>
 						</manifestEntries>
-					</archive>
+ -->					</archive>
 				</configuration>
 			</plugin>
 			<!-- The WildFly plug-in deploys the WAR to a local JBoss EAP container -->
