@@ -31,6 +31,19 @@ $(document).ready(function(){
 			});
 		});
 
+	$("#button3").click(function(){
+		var city = $("input#city").val();
+		var url = "http://localhost:8080/jboss-weatherapp/rest/weather/" + city;
+
+		$.getJSON( url, function( json ) {
+			  console.log( "City: " + json.city + ", " + json.country );
+			  console.log( "City: " + json.temperature + ", " + json.conditions );
+			  var weather = json.city + ", " + json.country + ": " + json.temperature + " with " + json.conditions;
+			  console.log(weather);
+			  $("#div2").html(weather);
+			 });
+	});
+
 });
 </script>
 </head>
@@ -40,6 +53,26 @@ $(document).ready(function(){
 
 <button id="button1">Get Some Weather</button>
 <button id="button2">Get All Weather</button>
+<div id="div2">The Weather is...</div>
+<h2>A List of Valid Cities</h2>
+<ul>
+<li>London, UK</li>
+<li>Rome, Italy</li>
+<li>Como, Italy</li>
+<li>Basel, Switzerland</li>
+<li>Bern, Switzerland</li>
+<li>London, UK</li>
+<li>Ottawa, Canada</li>
+<li>Toronto, Canada</li>
+<li>Lisbon, Portugal</li>
+<li>Porto, Portugal</li>
+<li>Raleigh, USA</li>
+<li>Washington, USA</li>
+</ul>
+<form>
+<input type="text" id="city" name="city" />
+</form>
+<button id="button3">Get The Weather</button>
 
 </body>
 </html>
